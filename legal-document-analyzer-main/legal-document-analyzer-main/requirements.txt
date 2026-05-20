@@ -1,0 +1,9 @@
+pdfplumber
+spacy
+sentence-transformers
+chromadb
+fpdf2
+transformers
+torch
+requests
+python-dotenv

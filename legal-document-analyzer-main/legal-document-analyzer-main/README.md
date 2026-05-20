@@ -58,6 +58,54 @@ Professional PDF Report (fpdf2)
 4. Upload a legal PDF to your Google Drive documents folder
 5. Run all cells in order from top to bottom
 
+## Local Setup
+
+If you prefer to run locally instead of Colab, follow these steps:
+
+1. Create a virtual environment and install dependencies:
+
+```
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+2. Create a file named `.env` in the repository root and add your API keys (do not commit this file):
+
+```
+GROQ_API_KEY=your_groq_api_key_here
+HUGGINGFACE_API_KEY=your_huggingface_api_key_here
+```
+
+3. Start the notebook locally:
+
+```
+./start.sh
+```
+
+4. In the notebook, access keys via environment variables. Example Python snippet to add as a cell near the top:
+
+```python
+import os
+from dotenv import load_dotenv
+load_dotenv()  # reads .env
+GROQ_API_KEY = os.environ.get('GROQ_API_KEY')
+HUGGINGFACE_API_KEY = os.environ.get('HUGGINGFACE_API_KEY')
+```
+
+Security note: Never paste API keys directly into notebooks or commit them to version control. Use `.env` or your environment's secret manager.
+
+## Quick Local Demo (no API keys required)
+
+If you just want to see the analyzer output locally without any external API keys or Google Colab, run the included lightweight demo:
+
+```
+python3 run_local.py
+```
+
+This demo uses a short sample contract, runs `spaCy` entity extraction, splits text into clauses, and runs a simple rule-based risk classifier so you can view output immediately.
+
+
 ---
 
 ## Sample Output
